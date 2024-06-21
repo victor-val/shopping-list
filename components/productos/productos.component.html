@@ -1,0 +1,23 @@
+<div *ngIf="!sinListaSeleccionada && productos().length > 0">
+  <mat-selection-list>
+    <app-item-producto *ngFor="let producto of productos()" (actualizarLista)="doActualizarLista()" [producto]="producto" ></app-item-producto>
+  </mat-selection-list>
+</div>
+
+<div *ngIf="!sinListaSeleccionada">
+
+  <div *ngIf="productos().length === 0">
+    <h1>No hay productos en la lista</h1>
+    <h2>Haz click en el botón <strong>Añadir producto</strong>.</h2>
+  </div>
+
+  <button class="fake-fab-button" (click)="showAnadirProducto()" mat-raised-button color="accent" aria-label="Añadir producto">
+    <mat-icon>inventory_2</mat-icon>
+    Añadir producto
+  </button>
+</div>
+
+<div *ngIf="sinListaSeleccionada">
+  <h1>No hay una lista seleccionada</h1>
+  <h2>Por favor, selecciona una lista del menú lateral o crea una nueva</h2>
+</div>

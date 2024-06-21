@@ -1,0 +1,12 @@
+<mat-nav-list>
+  <app-item-lista-compra
+    *ngFor="let listaCompra of listasCompra"
+    [lista]="listaCompra"
+    (listaActualizada)="onListaActualizada($event)"
+  ></app-item-lista-compra>
+</mat-nav-list>
+
+<button mat-button color="accent" (click)="showNewListaDialog()">
+  <mat-icon>add_circle_outline</mat-icon>
+  Nueva lista
+</button>

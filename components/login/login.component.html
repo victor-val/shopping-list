@@ -1,0 +1,55 @@
+<div>
+  <div class="idioma">
+    <select (change)="changeLanguage($event)">
+      <option value="en">English</option>
+      <option value="es">Español</option>
+    </select>
+  </div>
+
+  <h1>{{ "WELCOME" | translate }}</h1>
+</div>
+<div class="login-container">
+  <form [formGroup]="formulario" (ngSubmit)="doLogin()">
+    <h1>Shopping List - Login</h1>
+    <mat-form-field
+      appearance="fill"
+      hintLabel="Usar como usuario atuny0 para demo"
+    >
+      <mat-label>Nombre de usuario</mat-label>
+      <input matInput type="text" formControlName="username" />
+      <mat-error *ngIf="formulario.get('username')?.errors?.['required']"
+        >Por favor, escribe tu correo electrónico</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" formControlName="password" />
+      <mat-hint>Usar como contraseña 9uQFF1Lh para demo</mat-hint>
+      <mat-error *ngIf="formulario.get('password')?.errors?.['required']"
+        >Por favor, escribe una contraseña</mat-error
+      >
+      <mat-error *ngIf="formulario.get('password')?.errors?.['minlength']"
+        >La contraseña tiene que tener al menos 6 caracteres</mat-error
+      >
+    </mat-form-field>
+    <div class="buttons">
+      <button
+        type="button"
+        [routerLink]="['/registro']"
+        mat-button
+        color="accent"
+      >
+        Regístrate
+      </button>
+      <button
+        type="submit"
+        [disabled]="formulario.invalid"
+        mat-raised-button
+        color="primary"
+      >
+        Login
+      </button>
+    </div>
+  </form>
+</div>
